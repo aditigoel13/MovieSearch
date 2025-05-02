@@ -1,24 +1,22 @@
+import "./css/App.css";
+import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import { MovieProvider } from "./contexts/MovieContext";
+import NavBar from "./components/NavBar";
 
-import './App.css'
-import MovieCard from "./components/MovieCard"
 function App() {
-  
-
   return (
-    <>
-    <MovieCard movie ={{
-      Title: "The Shawshank Redemption",
-      release_date: "1994-09-23",
-      url: "https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg"
-    }} />
-    <MovieCard movie ={{
-      Title: "The Godfather",
-      release_date: "1972-03-24",
-      url: "https://m.media-amazon.com/images/I/51zUbui+gIL._AC_.jpg"
-    }} />
-    </>
+    <MovieProvider>
+      <NavBar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </main>
+    </MovieProvider>
   );
 }
-
 
 export default App;
